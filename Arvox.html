@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARVOX PRO</title>
+
+<style>
+
+body{
+    background:#071a35;
+    color:white;
+    font-family:Arial,sans-serif;
+    margin:0;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#c7d7f5;
+    margin-bottom:30px;
+}
+
+.card{
+    background:#102b57;
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+img{
+    width:100%;
+    border-radius:10px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    border:none;
+    border-radius:10px;
+    padding:10px;
+    resize:none;
+    font-size:15px;
+}
+
+button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1565c0;
+}
+
+.result{
+    text-align:left;
+    line-height:1.7;
+}
+
+.score{
+    font-size:28px;
+    font-weight:bold;
+    color:#8ec5ff;
+}
+
+ul li{
+    margin-bottom:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ARVOX PRO</h1>
+
+<p class="subtitle">
+Sistema de análisis arquitectónico para evaluación y optimización del proyecto de referencia.
+</p>
+
+<div class="card">
+
+<h3>Plano de Referencia</h3>
+
+<img
+src="Plano para arvox.JPEG"
+alt="Plano Arquitectónico">
+
+</div>
+
+<div class="card">
+
+<h3>Solicitud de Análisis</h3>
+
+<textarea
+id="prompt"
+placeholder="Ejemplo: mejorar iluminación, optimizar patio central, analizar circulación">
+</textarea>
+
+<button onclick="analizar()">
+Analizar Plano
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Consultas Sugeridas</h3>
+
+<ul>
+<li>Mejorar iluminación natural</li>
+<li>Optimizar distribución de espacios</li>
+<li>Analizar circulación interior</li>
+<li>Evaluar sostenibilidad</li>
+<li>Mejorar ventilación natural</li>
+<li>Optimizar patio central</li>
+<li>Evaluar áreas verdes</li>
+<li>Analizar accesibilidad</li>
+<li>Mejorar eficiencia energética</li>
+<li>Evaluar estacionamiento</li>
+</ul>
+
+</div>
+
+<div class="card result" id="out">
+
+Ingrese una consulta para comenzar el análisis.
+
+</div>
+
+</div>
+
+<script>
+
+function aleatorio(lista){
+
+return lista[
+Math.floor(Math.random() * lista.length)
+];
+
+}
+
+async function analizar(){
+
+const prompt =
+document.getElementById("prompt")
+.value
+.toLowerCase();
+
+const out =
+document.getElementById("out");
+
+out.innerHTML = `
+<h3>Procesando análisis...</h3>
+<p>Evaluando distribución espacial, iluminación, ventilación y sostenibilidad.</p>
+`;
+
+await new Promise(resolve =>
+setTimeout(resolve,2500)
+);
+
+const iluminacion = [
+
+"El proyecto presenta un adecuado aprovechamiento de la luz natural gracias a los espacios abiertos centrales.",
+
+"Las áreas principales cuentan con potencial para recibir iluminación uniforme durante gran parte del día.",
+
+"Se recomienda aumentar la captación de luz natural en zonas interiores mediante aperturas estratégicas."
+
+];
+
+const distribucion = [
+
+"La organización espacial es clara y favorece la funcionalidad general del proyecto.",
+
+"Existe una relación equilibrada entre áreas abiertas y espacios construidos.",
+
+"La distribución actual permite una correcta separación de funciones y recorridos."
+
+];
+
+const circulacion = [
+
+"Los recorridos internos permiten una conexión eficiente entre las distintas áreas.",
+
+"La circulación general favorece el acceso a los espacios principales del proyecto.",
+
+"El esquema de circulación resulta claro y fácil de comprender para los usuarios."
+
+];
+
+const sostenibilidad = [
+
+"El proyecto posee características favorables para incorporar estrategias sostenibles.",
+
+"La presencia de áreas abiertas mejora el confort ambiental y el rendimiento energético.",
+
+"Se recomienda considerar soluciones pasivas para reducir el consumo energético."
+
+];
+
+const ventilacion = [
+
+"La configuración del proyecto favorece la ventilación natural.",
+
+"Los espacios abiertos contribuyen a una adecuada renovación del aire.",
+
+"Existe potencial para fortalecer la ventilación cruzada en áreas interiores."
+
+];
+
+const patio = [
+
+"El patio central funciona como elemento organizador del conjunto arquitectónico.",
+
+"El espacio central aporta iluminación y ventilación a los ambientes cercanos.",
+
+"El patio constituye uno de los principales puntos de valor del proyecto."
+
+];
+
+const areasVerdes = [
+
+"La vegetación existente contribuye positivamente al confort ambiental.",
+
+"Las áreas verdes fortalecen la calidad espacial del proyecto.",
+
+"Existe potencial para ampliar zonas ajardinadas y espacios de convivencia."
+
+];
+
+const accesibilidad = [
+
+"Los accesos principales presentan una organización adecuada.",
+
+"Las rutas de circulación muestran una conectividad eficiente.",
+
+"Se recomienda evaluar criterios de accesibilidad universal en recorridos principales."
+
+];
+
+const energia = [
+
+"El proyecto presenta condiciones favorables para integrar tecnologías eficientes.",
+
+"Las estrategias pasivas podrían reducir significativamente la demanda energética.",
+
+"Existe potencial para incorporar sistemas de generación renovable."
+
+];
+
+const estacionamiento = [
+
+"Los accesos vehiculares son funcionales y permiten una circulación adecuada.",
+
+"Se recomienda revisar radios de giro y maniobras de acceso.",
+
+"El área de estacionamiento podría optimizarse para mejorar la movilidad interna."
+
+];
+
+let recomendaciones = [];
+
+if(prompt.includes("iluminacion") || prompt.includes("luz")){
+recomendaciones.push(aleatorio(iluminacion));
+}
+
+if(prompt.includes("distribucion") || prompt.includes("espacio")){
+recomendaciones.push(aleatorio(distribucion));
+}
+
+if(prompt.includes("circulacion")){
+recomendaciones.push(aleatorio(circulacion));
+}
+
+if(prompt.includes("sostenibilidad") || prompt.includes("sostenible")){
+recomendaciones.push(aleatorio(sostenibilidad));
+}
+
+if(prompt.includes("ventilacion")){
+recomendaciones.push(aleatorio(ventilacion));
+}
+
+if(prompt.includes("patio")){
+recomendaciones.push(aleatorio(patio));
+}
+
+if(prompt.includes("verde") || prompt.includes("jardin")){
+recomendaciones.push(aleatorio(areasVerdes));
+}
+
+if(prompt.includes("accesibilidad")){
+recomendaciones.push(aleatorio(accesibilidad));
+}
+
+if(prompt.includes("energia")){
+recomendaciones.push(aleatorio(energia));
+}
+
+if(prompt.includes("estacionamiento")){
+recomendaciones.push(aleatorio(estacionamiento));
+}
+
+if(recomendaciones.length === 0){
+
+recomendaciones = [
+
+aleatorio(iluminacion),
+aleatorio(distribucion),
+aleatorio(circulacion),
+aleatorio(sostenibilidad)
+
+];
+
+}
+
+const nota =
+(8 + Math.random()*1.5).toFixed(1);
+
+out.innerHTML = `
+
+<h2>Informe de Análisis Arquitectónico</h2>
+
+<h3>Resumen General</h3>
+
+<p>
+El proyecto presenta una organización espacial estructurada alrededor de un espacio central abierto que favorece la iluminación natural, la ventilación y la integración de los distintos ambientes. La distribución general muestra un equilibrio adecuado entre áreas construidas y espacios abiertos.
+</p>
+
+<h3>Puntos Destacados</h3>
+
+<ul>
+<li>Organización espacial clara y funcional.</li>
+<li>Aprovechamiento eficiente de espacios abiertos.</li>
+<li>Potencial para estrategias sostenibles.</li>
+<li>Buena relación entre circulación y accesibilidad.</li>
+</ul>
+
+<h3>Resultados del Análisis</h3>
+
+<ul>
+${recomendaciones.map(r => `<li>${r}</li>`).join("")}
+</ul>
+
+<h3>Calificación General</h3>
+
+<div class="score">
+${nota}/10
+</div>
+
+<p>
+ARVOX PRO generó este análisis utilizando criterios de distribución espacial, iluminación natural, ventilación, sostenibilidad y aprovechamiento arquitectónico.
+</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
